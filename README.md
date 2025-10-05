@@ -113,7 +113,7 @@ The library gives the possibility to use the [Lite API](https://ipinfo.io/develo
 The returned details are slightly different from the Core API.
 
 ```typescript
-import IPinfoLiteWrapper from "node-ipinfo";
+import { IPinfoLiteWrapper } from "node-ipinfo";
 
 const ipinfoWrapper = new IPinfoLiteWrapper("MY_TOKEN");
 const ipinfo = await ipinfoWrapper.lookupIp("8.8.8.8");
