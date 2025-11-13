@@ -5,29 +5,42 @@ on:
         tags:
             - "v*"
 
+permissions:
+    id-token: write # Required for OIDC
+    contents: read
+
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+
             - uses: actions/setup-node@v4
               with:
                   node-version: 16
+
             - run: npm ci
+
             - run: npm test
               env:
                   IPINFO_TOKEN: ${{secrets.IPINFO_TOKEN}}
+
     publish:
         needs: build
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+
             - uses: actions/setup-node@v4
               with:
                   node-version: 16
                   registry-url: https://registry.npmjs.org/
+
+            - name: Update npm
+              run: npm install -g npm@latest
+
             - run: npm ci
+
             - run: npm run build
+
             - run: npm publish
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
