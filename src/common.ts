@@ -1,5 +1,6 @@
 export const HOST: string = "ipinfo.io";
 export const HOST_LITE: string = "api.ipinfo.io/lite";
+export const HOST_CORE: string = "api.ipinfo.io/lookup";
 
 // cache version
 export const CACHE_VSN: string = "1";
@@ -114,6 +115,39 @@ export interface IPinfoLite {
     continentCode: string;
     continent: string;
     isEU: boolean;
+}
+
+export interface IPinfoCore {
+    ip: string;
+    geo: {
+        city: string;
+        region: string;
+        region_code: string;
+        country: string;
+        country_code: string;
+        continent: string;
+        continent_code: string;
+        latitude: number;
+        longitude: number;
+        timezone: string;
+        postal_code: string;
+        country_name?: string;
+        isEU?: boolean;
+        country_flag?: CountryFlag;
+        country_currency?: CountryCurrency;
+        country_flag_url?: string;
+    };
+    as: {
+        asn: string;
+        name: string;
+        domain: string;
+        type: string;
+    };
+    is_anonymous: boolean;
+    is_anycast: boolean;
+    is_hosting: boolean;
+    is_mobile: boolean;
+    is_satellite: boolean;
 }
 
 export interface Prefix {
