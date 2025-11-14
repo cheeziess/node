@@ -1,6 +1,7 @@
 export const HOST: string = "ipinfo.io";
 export const HOST_LITE: string = "api.ipinfo.io/lite";
 export const HOST_CORE: string = "api.ipinfo.io/lookup";
+export const HOST_PLUS: string = "api.ipinfo.io/lookup";
 
 // cache version
 export const CACHE_VSN: string = "1";
@@ -142,6 +143,57 @@ export interface IPinfoCore {
         name: string;
         domain: string;
         type: string;
+    };
+    is_anonymous: boolean;
+    is_anycast: boolean;
+    is_hosting: boolean;
+    is_mobile: boolean;
+    is_satellite: boolean;
+}
+
+export interface IPinfoPlus {
+    ip: string;
+    hostname: string;
+    geo: {
+        city: string;
+        region: string;
+        region_code: string;
+        country: string;
+        country_code: string;
+        continent: string;
+        continent_code: string;
+        latitude: number;
+        longitude: number;
+        timezone: string;
+        postal_code: string;
+        dma_code: string;
+        geoname_id: string;
+        radius: number;
+        last_changed?: string;
+        country_name?: string;
+        isEU?: boolean;
+        country_flag?: CountryFlag;
+        country_currency?: CountryCurrency;
+        country_flag_url?: string;
+    };
+    as: {
+        asn: string;
+        name: string;
+        domain: string;
+        type: string;
+        last_changed: string;
+    };
+    mobile: {
+        name?: string;
+        mcc?: string;
+        mnc?: string;
+    };
+    anonymous: {
+        is_proxy: boolean;
+        is_relay: boolean;
+        is_tor: boolean;
+        is_vpn: boolean;
+        name?: string;
     };
     is_anonymous: boolean;
     is_anycast: boolean;
