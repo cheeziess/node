@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 4.2.0
+
+- Add support for IPinfo Core API
+- Add support for IPinfo Plus API
+
+
 ## 4.1.0
 
 - Add support for IPinfo Lite API
